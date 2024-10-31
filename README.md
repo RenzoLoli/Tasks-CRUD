@@ -194,7 +194,7 @@ docker-compose up
 #### TaskStatus
 
 ```typescript
-type TaskStatus = "pendiente" | "en progreso" | "completa";
+type TaskStatus = "pendiente" | "en progreso" | "completada";
 ```
 
 #### TimeFormat
@@ -280,7 +280,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre
 - Inserte el id de la tarea en el path de la URL
 
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completa"}' http://127.0.0.1:8000/tasks/{id}
+curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completada"}' http://127.0.0.1:8000/tasks/{id}
 ```
 
 ### Actualizar tarea por titulo
@@ -288,7 +288,7 @@ curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completa"}' http:
 - Inserte el id de la tarea en el path de la URL
 
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Vue"' http://127.0.0.1:8000/tasks/{id}
+curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Vue"}' http://127.0.0.1:8000/tasks/{id}
 ```
 
 ### Actualizar tarea por titulo y descripcion
@@ -305,14 +305,6 @@ curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre 
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" -d '{"fechaVencimiento":"2024/12/06"}' http://127.0.0.1:8000/tasks/{id}
-```
-
-### Borrar una tarea
-
-- Inserte el id de la tarea en el path de la URL
-
-```bash
-curl -X DELETE http://127.0.0.1:8000/tasks/{id}
 ```
 
 ### Enlistar todas las tareas
@@ -345,4 +337,12 @@ curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar&estado=completa
 
 ```bash
 curl -X GET http://127.0.0.1:8000/tasks/{id}
+```
+
+### Borrar una tarea
+
+- Inserte el id de la tarea en el path de la URL
+
+```bash
+curl -X DELETE http://127.0.0.1:8000/tasks/{id}
 ```
