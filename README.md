@@ -31,8 +31,20 @@
     - [MessageResource](#messageresource)
     - [ErrorResource](#errorresource)
     - [GetAllTasks](#getalltasks)
-  - [Ejemplos](#ejemplos) - [Crear una tarea con feca de vencimiento](#crear-una-tarea-con-feca-de-vencimiento) - [Crear una tarea sin feca de vencimiento](#crear-una-tarea-sin-feca-de-vencimiento) - [Actualizar tarea por estado](#actualizar-tarea-por-estado) - [Actualizar tarea por titulo](#actualizar-tarea-por-titulo) - [Actualizar tarea por titulo y descripcion](#actualizar-tarea-por-titulo-y-descripcion) - [Actualizar tarea por fecha de vencimiento](#actualizar-tarea-por-fecha-de-vencimiento) - [Borrar una tarea](#borrar-una-tarea) - [Enlistar todas las tareas](#enlistar-todas-las-tareas) - [Enlistar las tareas con filtro de titulo](#enlistar-las-tareas-con-filtro-de-titulo) - [Enlistar las tareas con filtro de estado](#enlistar-las-tareas-con-filtro-de-estado) - [Enlistar las tareas con filtros de titulo y estado](#enlistar-las-tareas-con-filtros-de-titulo-y-estado) - [Obtener una tarea por id](#obtener-una-tarea-por-id)
-  <!--toc:end-->
+  - [Ejemplos](#ejemplos)
+    - [Crear una tarea con fecha de vencimiento](#crear-una-tarea-con-fecha-de-vencimiento)
+    - [Crear una tarea sin fecha de vencimiento](#crear-una-tarea-sin-fecha-de-vencimiento)
+    - [Actualizar tarea por estado](#actualizar-tarea-por-estado)
+    - [Actualizar tarea por titulo](#actualizar-tarea-por-titulo)
+    - [Actualizar tarea por titulo y descripcion](#actualizar-tarea-por-titulo-y-descripcion)
+    - [Actualizar tarea por fecha de vencimiento](#actualizar-tarea-por-fecha-de-vencimiento)
+    - [Borrar una tarea](#borrar-una-tarea)
+    - [Enlistar todas las tareas](#enlistar-todas-las-tareas)
+    - [Enlistar las tareas con filtro de titulo](#enlistar-las-tareas-con-filtro-de-titulo)
+    - [Enlistar las tareas con filtro de estado](#enlistar-las-tareas-con-filtro-de-estado)
+    - [Enlistar las tareas con filtros de titulo y estado](#enlistar-las-tareas-con-filtros-de-titulo-y-estado)
+    - [Obtener una tarea por id](#obtener-una-tarea-por-id)
+    <!--toc:end-->
 
 ## Autor
 
@@ -141,7 +153,7 @@ npm start
 
 - [Docker](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- **Environment Variables:** (Actualizar docker-compose.yml)
+- **Environment Variables:** (Actualizar docker-compose.yml) -> NO NOCESARIO
   - API_PORT: Number
   - API_HOST: Address
   - API_MONGODB_URI: Uri
