@@ -437,7 +437,7 @@ curl -X GET http://127.0.0.1:8000/tasks?estado=completada
 ### Enlistar las tareas con filtros de titulo y estado
 
 ```bash
-curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar&estado=completada
+curl -X GET http://127.0.0.1:8000/tasks?titulo=%20sobre%20Actix&estado=completada
 ```
 
 ```json
