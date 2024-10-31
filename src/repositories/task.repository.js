@@ -1,7 +1,6 @@
 import * as Types from "../types/typedefs.js";
 import { MongoDbError } from "../errors/database.error.js";
 import { taskModel } from "../models/task.model.js";
-import mongoose from "mongoose";
 
 /**
  * @class
@@ -10,11 +9,8 @@ import mongoose from "mongoose";
 export class TaskRepository {
   /**
    * @constructor
-   * @param {typeof mongoose} database
    */
-  constructor(database) {
-    this.database = database;
-  }
+  constructor() {}
 
   /**
    * Obtener una tarea segun su identificador unico
