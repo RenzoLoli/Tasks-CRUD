@@ -1,3 +1,4 @@
+import { InvalidDateError } from "../errors/date.error.js";
 import { NotFoundOnEnumError } from "../errors/enum.error.js";
 import { PropertyTypeError } from "../errors/input.error.js";
 import { MinLenghtError } from "../errors/text.error.js";
@@ -198,12 +199,21 @@ export class Task {
    * @param {string | Date | undefined} expiration
    */
   setExpirationDate(expiration) {
+    /** No hacer nada en caso de datos de entrada no definidos */
     if (expiration == undefined) {
       this.fechaVencimiento = undefined;
       return;
     }
 
+    /** llenar la fecha de vencimiento si no esta definida */
     if (this.fechaVencimiento) this.fechaVencimiento.setDate(expiration);
     else this.fechaVencimiento = new ExpirationDate(expiration);
+
+    /** Validar que la fecha de vencimiento no sea menor a la de creacion*/
+    if (!this.fechaVencimiento.previousTo(this.fechaCreacion)) {
+      throw new InvalidDateError(
+        "La fecha de expiracion no puede ser anterior a la fecha actual",
+      );
+    }
   }
 }

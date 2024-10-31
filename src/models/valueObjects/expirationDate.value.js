@@ -50,4 +50,13 @@ export class ExpirationDate {
       );
     }
   }
+
+  /**
+   * Comprueba si la fecha de expiracion es previa a la fecha actual
+   * @param {Date} date
+   * @returns {boolean}
+   */
+  previousTo(date) {
+    return this.date <= date;
+  }
 }
