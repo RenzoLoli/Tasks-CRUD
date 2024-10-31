@@ -264,6 +264,9 @@ type TimeFormat = "yyyy/MM/dd";
 
 ## Ejemplos
 
+> [!NOTE]  
+> Todos los ejemplos son secuenciales para que se pueda notar la evolución de los estados de la tarea
+
 ### Crear una tarea con fecha de vencimiento
 
 ```bash
@@ -282,6 +285,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Estudiar", "desc
 ```
 
 ### Crear una tarea sin fecha de vencimiento
+
+> [!IMPORTANT]
+> Use el 'id' de esta peticion para los siguientes ejemplos para que tomen forma las respuestas
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Angular", "descripcion":"Aumentar mis conocimientos sobre Frontend"}' http://127.0.0.1:8000/tasks
@@ -308,7 +314,7 @@ curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completada"}' htt
 
 ```json
 {
-  "id": "6723a372b65162492c46addf",
+  "id": "...",
   "titulo": "Investigar sobre Angular",
   "descripcion": "Aumentar mis conocimientos sobre Frontend",
   "estado": "pendiente",
@@ -326,7 +332,7 @@ curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre 
 
 ```json
 {
-  "id": "6723a372b65162492c46addf",
+  "id": "...",
   "titulo": "Investigar sobre Angular",
   "descripcion": "Aumentar mis conocimientos sobre Frontend",
   "estado": "completada",
@@ -344,7 +350,7 @@ curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre 
 
 ```json
 {
-  "id": "6723a372b65162492c46addf",
+  "id": "...",
   "titulo": "Investigar sobre Vue",
   "descripcion": "Aumentar mis conocimientos sobre Frontend",
   "estado": "completada",
@@ -362,7 +368,7 @@ curl -X PUT -H "Content-Type: application/json" -d '{"fechaVencimiento":"2024/12
 
 ```json
 {
-  "id": "6723a372b65162492c46addf",
+  "id": "...",
   "titulo": "Investigar sobre Actix",
   "descripcion": "Aumentar mis conocimientos sobre Backend",
   "estado": "completada",
@@ -406,7 +412,7 @@ curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar
 ```json
 [
   {
-    "id": "6723a305b65162492c46addd",
+    "id": "...",
     "titulo": "Estudiar",
     "descripcion": "Estudiar para el examen de matematicas",
     "estado": "pendiente",
@@ -425,7 +431,7 @@ curl -X GET http://127.0.0.1:8000/tasks?estado=completada
 ```json
 [
   {
-    "id": "6723a372b65162492c46addf",
+    "id": "...",
     "titulo": "Investigar sobre Actix",
     "descripcion": "Aumentar mis conocimientos sobre Backend",
     "estado": "completada",
@@ -444,7 +450,7 @@ curl -X GET http://127.0.0.1:8000/tasks?titulo=Investigar%20sobre%20Actix&estado
 ```json
 [
   {
-    "id": "6723a372b65162492c46addf",
+    "id": "...",
     "titulo": "Investigar sobre Actix",
     "descripcion": "Aumentar mis conocimientos sobre Backend",
     "estado": "completada",
@@ -464,7 +470,7 @@ curl -X GET http://127.0.0.1:8000/tasks/{id}
 
 ```json
 {
-  "id": "6723a372b65162492c46addf",
+  "id": "...",
   "titulo": "Investigar sobre Actix",
   "descripcion": "Aumentar mis conocimientos sobre Backend",
   "estado": "completada",
