@@ -129,7 +129,6 @@ import { TASK_STATUS } from "../models/valueObjects/status.enum.js";
  * @type {Object}
  * @property {string} titulo Titulo de la tarea
  * @property {string} descripcion Descripcion de la tarea
- * @property {TaskStatus} estado Estado actual de la tarea
  * @property {string?} fechaVencimiento Fecha de vencimiento de la tarea (Opcional)
  */
 

@@ -17,9 +17,9 @@ export const createTaskRoute = async (req, res) => {
      * Queries necesarias para los filtros
      * @type {Types.CreateTaskResource}
      */
-    const { titulo, descripcion, estado, fechaVencimiento } = req.body;
+    const { titulo, descripcion, fechaVencimiento } = req.body;
 
-    if (!titulo || !descripcion || !estado) {
+    if (!titulo || !descripcion) {
       /**
        * Tipo de error de validacion del cuerpo de la peticion
        * @type {Types.ErrorResource}
@@ -39,7 +39,6 @@ export const createTaskRoute = async (req, res) => {
       titulo,
       descripcion,
       fechaVencimiento,
-      estado,
     };
 
     const task = await userCommandService.create(createTaskQuery);
