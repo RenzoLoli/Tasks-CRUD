@@ -163,7 +163,7 @@ npm start
 ```bash
 git clone https://github.com/RenzoLoli/Tasks-CRUD.git
 cd Tasks-CRUD
-docker-compose up
+docker-compose up --build
 ```
 
 ## Rutas de acceso
@@ -182,6 +182,7 @@ docker-compose up
   - **Response:** [TaskResource](#taskresource) 201
   - **Errors:** [ErrorResource](#errorresource) 400, 500
 - **UpdateTask:** PUT /tasks/:id
+  - **NOTES:** Este endpoint devuelve el recurso antes de actualizarse
   - **Body:** [UpdateTaskResource](#updatetaskresource)
   - **Response:** [TaskResource](#taskresource) 200
   - **Errors:** [ErrorResource](#errorresource) 400, 500
@@ -481,6 +482,5 @@ curl -X DELETE http://127.0.0.1:8000/tasks/{id}
 ```
 
 ```json
-``
-{"message":"Tarea eliminada"}
+{ "message": "Tarea eliminada" }
 ```
