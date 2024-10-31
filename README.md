@@ -269,18 +269,50 @@ type TimeFormat = "yyyy/MM/dd";
 curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Estudiar", "descripcion":"Estudiar para el examen de matematicas", "fechaVencimiento":"2024/12/06"}' http://127.0.0.1:8000/tasks
 ```
 
+```json
+{
+  "id": "...",
+  "titulo": "Estudiar",
+  "descripcion": "Estudiar para el examen de matematicas",
+  "estado": "pendiente",
+  "fechaCreacion": "31/10/2024",
+  "fechaVencimiento": "6/12/2024"
+}
+```
+
 ### Crear una tarea sin fecha de vencimiento
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Angular", "descripcion":"Aumentar mis conocimientos sobre Frontend"}' http://127.0.0.1:8000/tasks
 ```
 
+```json
+{
+  "id": "...",
+  "titulo": "Investigar sobre Angular",
+  "descripcion": "Aumentar mis conocimientos sobre Frontend",
+  "estado": "pendiente",
+  "fechaCreacion": "31/10/2024"
+}
+```
+
 ### Actualizar tarea por estado
 
 - Inserte el id de la tarea en el path de la URL
+- Este endpoint devuelve el recurso antes de actualizarse
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completada"}' http://127.0.0.1:8000/tasks/{id}
+```
+
+```json
+{
+  "id": "6723a372b65162492c46addf",
+  "titulo": "Investigar sobre Angular",
+  "descripcion": "Aumentar mis conocimientos sobre Frontend",
+  "estado": "pendiente",
+  "fechaCreacion": "31/10/2024"
+}
 ```
 
 ### Actualizar tarea por titulo
@@ -291,12 +323,32 @@ curl -X PUT -H "Content-Type: application/json" -d '{"estado":"completada"}' htt
 curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Vue"}' http://127.0.0.1:8000/tasks/{id}
 ```
 
+```json
+{
+  "id": "6723a372b65162492c46addf",
+  "titulo": "Investigar sobre Angular",
+  "descripcion": "Aumentar mis conocimientos sobre Frontend",
+  "estado": "completada",
+  "fechaCreacion": "31/10/2024"
+}
+```
+
 ### Actualizar tarea por titulo y descripcion
 
 - Inserte el id de la tarea en el path de la URL
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Actix", "descripcion":"Aumentar mis conocimientos sobre Backend"}' http://127.0.0.1:8000/tasks/{id}
+```
+
+```json
+{
+  "id": "6723a372b65162492c46addf",
+  "titulo": "Investigar sobre Vue",
+  "descripcion": "Aumentar mis conocimientos sobre Frontend",
+  "estado": "completada",
+  "fechaCreacion": "31/10/2024"
+}
 ```
 
 ### Actualizar tarea por fecha de vencimiento
@@ -307,10 +359,41 @@ curl -X PUT -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre 
 curl -X PUT -H "Content-Type: application/json" -d '{"fechaVencimiento":"2024/12/06"}' http://127.0.0.1:8000/tasks/{id}
 ```
 
+```json
+{
+  "id": "6723a372b65162492c46addf",
+  "titulo": "Investigar sobre Actix",
+  "descripcion": "Aumentar mis conocimientos sobre Backend",
+  "estado": "completada",
+  "fechaCreacion": "31/10/2024"
+}
+```
+
 ### Enlistar todas las tareas
 
 ```bash
 curl -X GET http://127.0.0.1:8000/tasks
+```
+
+```json
+[
+  {
+    "id": "...",
+    "titulo": "Estudiar",
+    "descripcion": "Estudiar para el examen de matematicas",
+    "estado": "pendiente",
+    "fechaCreacion": "31/10/2024",
+    "fechaVencimiento": "6/12/2024"
+  },
+  {
+    "id": "...",
+    "titulo": "Investigar sobre Actix",
+    "descripcion": "Aumentar mis conocimientos sobre Backend",
+    "estado": "completada",
+    "fechaCreacion": "31/10/2024",
+    "fechaVencimiento": "6/12/2024"
+  }
+]
 ```
 
 ### Enlistar las tareas con filtro de titulo
@@ -319,16 +402,55 @@ curl -X GET http://127.0.0.1:8000/tasks
 curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar
 ```
 
+```json
+[
+  {
+    "id": "6723a305b65162492c46addd",
+    "titulo": "Estudiar",
+    "descripcion": "Estudiar para el examen de matematicas",
+    "estado": "pendiente",
+    "fechaCreacion": "31/10/2024",
+    "fechaVencimiento": "6/12/2024"
+  }
+]
+```
+
 ### Enlistar las tareas con filtro de estado
 
 ```bash
-curl -X GET http://127.0.0.1:8000/tasks?estado=completa
+curl -X GET http://127.0.0.1:8000/tasks?estado=completada
+```
+
+```json
+[
+  {
+    "id": "6723a372b65162492c46addf",
+    "titulo": "Investigar sobre Actix",
+    "descripcion": "Aumentar mis conocimientos sobre Backend",
+    "estado": "completada",
+    "fechaCreacion": "31/10/2024",
+    "fechaVencimiento": "6/12/2024"
+  }
+]
 ```
 
 ### Enlistar las tareas con filtros de titulo y estado
 
 ```bash
-curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar&estado=completa
+curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar&estado=completada
+```
+
+```json
+[
+  {
+    "id": "6723a372b65162492c46addf",
+    "titulo": "Investigar sobre Actix",
+    "descripcion": "Aumentar mis conocimientos sobre Backend",
+    "estado": "completada",
+    "fechaCreacion": "31/10/2024",
+    "fechaVencimiento": "6/12/2024"
+  }
+]
 ```
 
 ### Obtener una tarea por id
@@ -339,10 +461,26 @@ curl -X GET http://127.0.0.1:8000/tasks?titulo=Estudiar&estado=completa
 curl -X GET http://127.0.0.1:8000/tasks/{id}
 ```
 
+```json
+{
+  "id": "6723a372b65162492c46addf",
+  "titulo": "Investigar sobre Actix",
+  "descripcion": "Aumentar mis conocimientos sobre Backend",
+  "estado": "completada",
+  "fechaCreacion": "31/10/2024",
+  "fechaVencimiento": "6/12/2024"
+}
+```
+
 ### Borrar una tarea
 
 - Inserte el id de la tarea en el path de la URL
 
 ```bash
 curl -X DELETE http://127.0.0.1:8000/tasks/{id}
+```
+
+```json
+``
+{"message":"Tarea eliminada"}
 ```
