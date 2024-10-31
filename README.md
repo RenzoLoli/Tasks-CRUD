@@ -1,7 +1,10 @@
 # Tasks-CRUD
 
 <!--toc:start-->
+
 - [Tasks-CRUD](#tasks-crud)
+  - [Autor](#autor)
+  - [Descripción](#descripción)
   - [Información Tecnica](#información-tecnica)
     - [Tecnologías](#tecnologías)
     - [Arquitectura y Estrategias](#arquitectura-y-estrategias)
@@ -18,32 +21,26 @@
     - [Requerimientos Docker](#requerimientos-docker)
     - [Ejecución Docker](#ejecución-docker)
   - [Rutas de acceso](#rutas-de-acceso)
-      - [Rutas](#rutas)
+    - [Rutas](#rutas)
   - [Recursos](#recursos)
-      - [TaskStatus](#taskstatus)
-      - [TimeFormat](#timeformat)
-      - [TaskResource](#taskresource)
-      - [CreateTaskResource](#createtaskresource)
-      - [UpdateTaskResource](#updatetaskresource)
-      - [MessageResource](#messageresource)
-      - [ErrorResource](#errorresource)
-      - [GetAllTasks](#getalltasks)
-  - [Ejemplos](#ejemplos)
-    - [Crear una tarea con feca de vencimiento](#crear-una-tarea-con-feca-de-vencimiento)
-    - [Crear una tarea sin feca de vencimiento](#crear-una-tarea-sin-feca-de-vencimiento)
-    - [Actualizar tarea por estado](#actualizar-tarea-por-estado)
-    - [Actualizar tarea por titulo](#actualizar-tarea-por-titulo)
-    - [Actualizar tarea por titulo y descripcion](#actualizar-tarea-por-titulo-y-descripcion)
-    - [Actualizar tarea por fecha de vencimiento](#actualizar-tarea-por-fecha-de-vencimiento)
-    - [Borrar una tarea](#borrar-una-tarea)
-    - [Enlistar todas las tareas](#enlistar-todas-las-tareas)
-    - [Enlistar las tareas con filtro de titulo](#enlistar-las-tareas-con-filtro-de-titulo)
-    - [Enlistar las tareas con filtro de estado](#enlistar-las-tareas-con-filtro-de-estado)
-    - [Enlistar las tareas con filtros de titulo y estado](#enlistar-las-tareas-con-filtros-de-titulo-y-estado)
-    - [Obtener una tarea por id](#obtener-una-tarea-por-id)
-<!--toc:end-->
+    - [TaskStatus](#taskstatus)
+    - [TimeFormat](#timeformat)
+    - [TaskResource](#taskresource)
+    - [CreateTaskResource](#createtaskresource)
+    - [UpdateTaskResource](#updatetaskresource)
+    - [MessageResource](#messageresource)
+    - [ErrorResource](#errorresource)
+    - [GetAllTasks](#getalltasks)
+  - [Ejemplos](#ejemplos) - [Crear una tarea con feca de vencimiento](#crear-una-tarea-con-feca-de-vencimiento) - [Crear una tarea sin feca de vencimiento](#crear-una-tarea-sin-feca-de-vencimiento) - [Actualizar tarea por estado](#actualizar-tarea-por-estado) - [Actualizar tarea por titulo](#actualizar-tarea-por-titulo) - [Actualizar tarea por titulo y descripcion](#actualizar-tarea-por-titulo-y-descripcion) - [Actualizar tarea por fecha de vencimiento](#actualizar-tarea-por-fecha-de-vencimiento) - [Borrar una tarea](#borrar-una-tarea) - [Enlistar todas las tareas](#enlistar-todas-las-tareas) - [Enlistar las tareas con filtro de titulo](#enlistar-las-tareas-con-filtro-de-titulo) - [Enlistar las tareas con filtro de estado](#enlistar-las-tareas-con-filtro-de-estado) - [Enlistar las tareas con filtros de titulo y estado](#enlistar-las-tareas-con-filtros-de-titulo-y-estado) - [Obtener una tarea por id](#obtener-una-tarea-por-id)
+  <!--toc:end-->
 
-Reto Tecnico - API CRUD de tareas
+## Autor
+
+- [RenzoLoli](https://github.com/RenzoLoli)
+
+## Descripción
+
+En este proyecto se implementa un sistema de gestión de tareas utilizando Node.js, Express.js y MongoDB.
 
 ## Información Tecnica
 
@@ -69,7 +66,7 @@ Reto Tecnico - API CRUD de tareas
   - Facilita la creación de modelos y operaciones CRUD
 - [Winston](https://github.com/winstonjs/winston)
   - Se especializa en el manejo de logs tanto en consola como en streams externos
-  - Se eligio para facilitar la configuracion del sistema de logs
+  - Se eligió para facilitar la configuracion del sistema de logs
 - [MongoDB](https://www.mongodb.com/)
   - (Requisito del sistema)
   - Base de datos NoSQL
@@ -79,28 +76,29 @@ Reto Tecnico - API CRUD de tareas
   - Se eligió para facilitar la ejecuión en distintos entornos
 - [Docker Compose](https://docs.docker.com/compose/)
   - Herramienta para definir y ejecutar aplicaciones de Docker
-  - Se eligó para poder unir los contenedores de mongodb y el contenedor de node en un solo sistema
+  - Se eligió para poder unir los contenedores de mongodb y el contenedor de node en un solo sistema
 
 ### Arquitectura y Estrategias
 
 #### Arquitectura de capas
 
-- Se eligio una arquitectura que se acomode a un sistema pequeño pero escalable
+- Se eligió una arquitectura que se acomode a un sistema pequeño pero escalable
 - Se hizo una estructura en base a esta arquitectura intentando generar
   carpetas que encierren las capas de Controlador, Modelo, Servicio y Repositorio
 
 #### Patron CQRS
 
-- Se eligio este patrón para poder manejar las operaciones de manera eficiente
+- Se eligió este patrón para poder manejar las operaciones de manera eficiente
 
 #### Patron Repository
 
-- Se eligio este patrón para manejar la persistencia de datos con una capa más de abstracción
+- Se eligió este patrón para manejar la persistencia de datos con una capa más de abstracción
 
 #### RESTful API
 
-- Esta implementacion ayuda a encapsular y manipular la lógica de entrada y salida de los datos
-  de los controladores
+- Nace de las políticas REST que a su vez se basa en el protocolo HTTP
+- Esta implementación ayuda a encapsular y manipular la lógica de entrada y salida como recursos,
+  tipos de peticiones y respuestas
 
 ## Scope Local
 
@@ -253,13 +251,13 @@ type TimeFormat = "yyyy/MM/dd";
 
 ## Ejemplos
 
-### Crear una tarea con feca de vencimiento
+### Crear una tarea con fecha de vencimiento
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Estudiar", "descripcion":"Estudiar para el examen de matematicas", "fechaVencimiento":"2024/12/06"}' http://127.0.0.1:8000/tasks
 ```
 
-### Crear una tarea sin feca de vencimiento
+### Crear una tarea sin fecha de vencimiento
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"titulo":"Investigar sobre Angular", "descripcion":"Aumentar mis conocimientos sobre Frontend"}' http://127.0.0.1:8000/tasks
