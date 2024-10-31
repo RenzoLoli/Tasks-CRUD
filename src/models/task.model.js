@@ -12,8 +12,8 @@ const taskSchema = new mongoose.Schema(
       required: true,
       match: /^(pendiente|en\ progreso|completada)$/,
     },
-    fechaCreacion: { type: String, required: true },
-    fechaVencimiento: { type: String, required: false },
+    fechaCreacion: { type: Date, required: true, default: Date.now },
+    fechaVencimiento: { type: Date, required: false, default: null },
   },
   {
     collection: "tasks",

@@ -25,7 +25,9 @@ export class TaskMapper {
     resource.descripcion = task.getDescripcion();
     resource.estado = task.getEstado();
     resource.fechaCreacion = task.getFechaCreacionLocale();
-    resource.fechaVencimiento = task.getFechaVencimientoLocale();
+
+    const expirationDate = task.getFechaVencimientoLocale();
+    if (expirationDate) resource.fechaVencimiento = expirationDate;
 
     return resource;
   }

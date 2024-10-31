@@ -153,6 +153,22 @@ export class Task {
   }
 
   /**
+   * Obtener la fecha de vencimiento
+   * @returns {Date | undefined}
+   */
+  getExpirationDate() {
+    return this.fechaVencimiento?.date;
+  }
+
+  /**
+   * Obtener la fechaa de creacion
+   * @returns {string}
+   */
+  getCreationDate() {
+    return this.fechaCreacion;
+  }
+
+  /**
    * Actualizar el estado actual de la tarea
    * @param {Types.TaskStatus} status
    */
@@ -210,7 +226,7 @@ export class Task {
     else this.fechaVencimiento = new ExpirationDate(expiration);
 
     /** Validar que la fecha de vencimiento no sea menor a la de creacion*/
-    if (!this.fechaVencimiento.previousTo(this.fechaCreacion)) {
+    if (this.fechaVencimiento.previousTo(this.fechaCreacion)) {
       throw new InvalidDateError(
         "La fecha de expiracion no puede ser anterior a la fecha actual",
       );
