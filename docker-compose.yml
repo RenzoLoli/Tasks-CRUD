@@ -1,0 +1,29 @@
+services:
+  mongodb:
+    image: mongo
+    command: mongod --quiet --logpath /dev/null
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - node
+
+  node:
+    build: .
+    container_name: node
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongodb
+    environment:
+      API_MONGODB_URI: mongodb://mongodb:27017/
+      API_PORT: 8000
+      API_HOST: 0.0.0.0
+    networks:
+      - node
+
+networks:
+  node:
+    driver: bridge
